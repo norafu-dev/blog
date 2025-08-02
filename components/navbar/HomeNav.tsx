@@ -1,7 +1,6 @@
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-const Navbar = () => {
+const HomeNav = () => {
   return (
     <nav className="flex items-center justify-center h-12 gap-4 md:gap-8">
       <Link href="/" className="text-xl">
@@ -14,4 +13,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default HomeNav;
