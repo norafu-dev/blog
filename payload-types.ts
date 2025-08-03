@@ -74,7 +74,11 @@ export interface Config {
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    categories: {
+      sub_categories: 'categories';
+    };
+  };
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
@@ -148,7 +152,12 @@ export interface Category {
   name: string;
   slug: string;
   color?: string | null;
-  tags?: (string | Tag)[] | null;
+  main_category?: (string | null) | Category;
+  sub_categories?: {
+    docs?: (string | Category)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -160,7 +169,6 @@ export interface Tag {
   id: string;
   name: string;
   slug: string;
-  category?: (string | null) | Category;
   updatedAt: string;
   createdAt: string;
 }
@@ -255,7 +263,8 @@ export interface CategoriesSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
   color?: T;
-  tags?: T;
+  main_category?: T;
+  sub_categories?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -266,7 +275,6 @@ export interface CategoriesSelect<T extends boolean = true> {
 export interface TagsSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
-  category?: T;
   updatedAt?: T;
   createdAt?: T;
 }

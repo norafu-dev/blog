@@ -20,12 +20,19 @@ export const Categories: CollectionConfig = {
       name: "color",
       type: "text",
     },
-
+    // 主分类
     {
-      name: "tags",
+      name: "main_category",
       type: "relationship",
-      relationTo: "tags",
-      hasMany: true,
+      relationTo: "categories",
+      hasMany: false,
+    },
+    // 子分类
+    {
+      name: "sub_categories",
+      type: "join",
+      collection: "categories",
+      on: "main_category",
     },
   ],
   admin: {

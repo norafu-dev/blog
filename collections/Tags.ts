@@ -15,12 +15,6 @@ export const Tags: CollectionConfig = {
       unique: true,
       index: true,
     },
-    {
-      name: "category",
-      type: "relationship",
-      relationTo: "categories",
-      hasMany: false,
-    },
   ],
   admin: {
     useAsTitle: "name",
