@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { TRPCProvider } from "@/trpc/client";
 
 export const metadata: Metadata = {
   title: "Nora Fu",
@@ -26,7 +27,9 @@ export default function RootLayout({
           `}
         </style>
       </head>
-      <body>{children}</body>
+      <body>
+        <TRPCProvider>{children}</TRPCProvider>
+      </body>
     </html>
   );
 }

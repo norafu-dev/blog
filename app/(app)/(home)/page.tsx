@@ -1,3 +1,8 @@
+"use client";
+
+import { trpc } from "@/trpc/client";
+
 export default function Home() {
-  return <main>Hello World</main>;
+  const { data, isLoading, error } = trpc.categories.getCategories.useQuery();
+  return <main>{JSON.stringify(data)}</main>;
 }
