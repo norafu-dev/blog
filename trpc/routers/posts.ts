@@ -10,24 +10,37 @@ export const postsRouter = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
-      const where: Where = {
-        status: {
-          equals: "published",
-        },
-      };
-
       if (input.category) {
-        where["category.slug"] = {
-          equals: input.category,
-        };
+        const posts = await ctx.payload.find({
+          collection: "categories",
+          where: {
+            slug: {
+              equals: input.category,
+            },
+          },
+          depth: 1,
+          joins: {
+            posts: {
+              where: {
+                status: {
+                  equals: "published",
+                },
+              },
+              // 时间新到旧
+              sort: "-createAt",
+            },
+          },
+        });
+        return posts;
       }
 
       const posts = await ctx.payload.find({
         collection: "posts",
-        where,
-        depth: 1,
+        where: {
+          status: { equals: "published" },
+        },
+        sort: "-createAt",
       });
-
       return posts;
     }),
 });

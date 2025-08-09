@@ -15,6 +15,12 @@ export const Tags: CollectionConfig = {
       unique: true,
       index: true,
     },
+    {
+      name: "posts",
+      type: "join",
+      collection: "posts",
+      on: "tags",
+    },
   ],
   admin: {
     useAsTitle: "name",

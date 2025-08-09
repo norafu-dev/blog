@@ -27,12 +27,11 @@ export const Categories: CollectionConfig = {
       relationTo: "categories",
       hasMany: false,
     },
-    // 子分类
     {
-      name: "sub_categories",
+      name: "posts",
       type: "join",
-      collection: "categories",
-      on: "main_category",
+      collection: "posts",
+      on: "category",
     },
   ],
   // 在集合以及相关联的集合中显示name，而不是id
