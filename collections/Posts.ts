@@ -56,10 +56,6 @@ export const Posts: CollectionConfig = {
       name: "updateAt",
       type: "date",
     },
-    {
-      name: "content",
-      type: "richText",
-    },
   ],
   admin: {
     useAsTitle: "title",

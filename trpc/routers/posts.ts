@@ -40,6 +40,14 @@ export const postsRouter = createTRPCRouter({
           status: { equals: "published" },
         },
         sort: "-createAt",
+        depth: 1,
+        select: {
+          title: true,
+          slug: true,
+          description: true,
+          createAt: true,
+          backgroundImage: true, // 这会自动展开
+        },
       });
       return posts;
     }),

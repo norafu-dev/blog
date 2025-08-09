@@ -184,21 +184,6 @@ export interface Post {
   tags?: (string | Tag)[] | null;
   createAt?: string | null;
   updateAt?: string | null;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -385,7 +370,6 @@ export interface PostsSelect<T extends boolean = true> {
   tags?: T;
   createAt?: T;
   updateAt?: T;
-  content?: T;
   updatedAt?: T;
   createdAt?: T;
 }
