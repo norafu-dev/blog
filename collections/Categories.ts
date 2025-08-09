@@ -35,6 +35,7 @@ export const Categories: CollectionConfig = {
       on: "main_category",
     },
   ],
+  // 在集合以及相关联的集合中显示name，而不是id
   admin: {
     useAsTitle: "name",
   },

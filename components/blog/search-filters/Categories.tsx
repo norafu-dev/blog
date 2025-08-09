@@ -1,21 +1,20 @@
+import { Button } from "@/components/ui/button";
 import { Category } from "@/payload-types";
-import CategoryDropdown from "./CategoryDropdown";
+import Link from "next/link";
 
 interface props {
-  categories: any;
+  categories: Category[];
 }
 
 const Categories = ({ categories }: props) => {
   return (
-    <div>
+    <div className="flex gap-4">
       {categories.map((category: Category) => (
-        <div key={category.id}>
-          <CategoryDropdown
-            category={category}
-            isActive={false}
-            isNavigationHovered={false}
-          />
-        </div>
+        <Button variant="outline" key={category.id}>
+          <Link href={`/blog/${category.slug}`} className="w-full">
+            {category.name}
+          </Link>
+        </Button>
       ))}
     </div>
   );

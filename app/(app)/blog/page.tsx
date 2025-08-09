@@ -1,8 +1,11 @@
-import { trpc } from "@/trpc/server";
+import { PostList } from "@/components/blog/post/PostList";
 
 const BlogPage = async () => {
-  const categories = await trpc.categories.getCategories();
-  return <div>{JSON.stringify(categories)}</div>;
+  return (
+    <div>
+      <PostList />
+    </div>
+  );
 };
 
 export default BlogPage;
